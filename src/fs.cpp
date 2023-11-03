@@ -8,7 +8,12 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #else
+#if defined(SF2000)
+#include <cstdint>
+#include "../../../dirent.h"
+#else
 #include <dirent.h>
+#endif
 #include <sys/stat.h>
 #include <sys/param.h>
 #endif

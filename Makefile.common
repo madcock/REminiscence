@@ -24,6 +24,12 @@ else ifneq (,$(findstring msvc,$(platform)))
 INCFLAGS += -I$(LIBRETRO_COMM_DIR)/include/compat/msvc
 endif
 
+ifneq (,$(findstring sf2000,$(platform)))
+SOURCES_C := \
+		$(CORE_DIR)/src/unpack.c
+endif
+
+ifneq ($(STATIC_LINKING), 1)
 SOURCES_C :=	$(CORE_DIR)/3rdparty/libco/libco.c \
 		$(CORE_DIR)/src/unpack.c \
 		$(LIBRETRO_COMM_DIR)/file/file_path.c \
@@ -36,6 +42,7 @@ SOURCES_C :=	$(CORE_DIR)/3rdparty/libco/libco.c \
 		$(LIBRETRO_COMM_DIR)/streams/file_stream_transforms.c \
 		$(LIBRETRO_COMM_DIR)/time/rtime.c \
 		$(LIBRETRO_COMM_DIR)/vfs/vfs_implementation.c
+endif
 
 SOURCES_CXX := \
 	       $(CORE_DIR)/src/collision.cpp \
